@@ -1,0 +1,104 @@
+/* poject_overview */
+
+.project_overview{
+  width: 100%; height: 100vh;
+  background: var(--main-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+.project_overview .postit_main{
+  position: relative;
+  text-align: center;
+}
+.project_overview .postit_main .postit_main img{
+  width: 100%;
+  max-width: 1300px;
+}
+.project_overview .postit_main .postit-text{
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.project_overview .postit_main .postit-text h2{
+  font-family: var(--Permanent-marker);
+  font-size: 80px;
+  color: #FF0F0D;
+  white-space: nowrap;
+  text-align: center;
+  line-height: 100px;
+}
+.project_overview .postit_main .postit-text p{
+  font-family: var(--Cafe24Ohsquare);
+  font-size: 40px;
+  margin-top: 50px;
+}
+.postit-track-wrapper {
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  padding: 10px 0;
+  margin-top: 20px;
+}
+.project_overview .postit-tabs{
+  display: flex;
+  width: max-content;
+  gap: 10px;
+  margin-top: -40px;
+  position: absolute;
+  top: 50%;left: 50%;
+  transform: translate(-50%, 10%);
+}
+.project_overview .postit-tabs .postit-tab{
+  border-top: 5px dotted #000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  transition: transform 0.3s;
+  position: relative;
+}
+
+.project_overview .postit-tabs .postit-tab:hover {
+  transform: rotate(-3deg) translateY(30px);
+}
+
+.project_overview .postit-tabs .postit-tab img{
+  transition: transform 0.8s ease, opacity 0.8s ease;
+  transform-origin: top center;
+}
+.project_overview .postit-tabs .postit-tab img.animate{
+  transform: rotate(10deg) translateY(300px) scale(1.4);
+  opacity: 0;
+}
+.project_overview .postit-tabs .postit-tab p{
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  pointer-events: none;
+  font-family: var(--Permanent-marker);
+  font-size: 40px;
+  text-align: center;
+  margin-top: 5px;
+}
+.postit-tab p.animate {
+  transform: translate(-50%, -50%) translateY(300px) scale(1.4);
+  opacity: 0;
+  transition: transform 0.8s ease, opacity 0.8s ease;
+}
+.project_overview .postit-tabs .postit-tab p img{
+  height: auto;
+  margin-bottom: 10px;
+}
+
+.project_overview .postit-tabs .postit-tab p span{
+  font-family: var(--Permanent-marker);
+  font-size: 34px;
+  text-align: center;
+  margin-top: 5px;
+}

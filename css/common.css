@@ -1,0 +1,526 @@
+@charset "utf-8";
+
+
+@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Bungee&family=Permanent+Marker&family=Schoolbell&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+@import url(font.css);
+
+/* 폰트, 컬러 변수선언 */
+:root {
+    --Bangers: "Bangers", system-ui;
+    --Bungee: "Bungee", sans-serif;
+    --Permanent-marker: "Permanent Marker", cursive;
+    --Schoolbell: "Schoolbell", cursive;
+    --Bebas-Neue: "Bebas Neue", sans-serif;
+
+    --Cooper-black: "cooper-Black";
+    --Blenny-Trial: 'Blenny Trial', sans-serif;
+    --Souvenir: 'Souvenir', sans-serif;
+    --SouvenirB: 'SouvenirB', sans-serif;
+    --SUIT: 'SUIT';
+    --Cafe24Ohsquare: 'Cafe24Ohsquare';
+    --KoPubBatang: 'KoPubBatang';
+    --Glamour_Absolute: 'Glamour_Absolute';
+
+    --main-color: #F6F2F1;
+    --main-ivory-color: #F2DDC8;
+    --main-red-color: #E52D2C;
+    --main-yellow-color: #F5BD33;
+}
+
+* {
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+    .plane {
+      position: fixed;
+      width: 60px;
+      height: 60px;
+      background: url('../img/free-icon-plane-776503.png') no-repeat center;
+      background-size: contain;
+      pointer-events: none;
+      z-index: 1000;
+      transform: translate(-50%, -50%);
+    }
+
+    .bullet {
+      position: fixed;
+      width: 5px;
+      height: 15px;
+      background: crimson;
+      border-radius: 2px;
+      z-index: 999;
+      pointer-events: none;
+    }
+section,main {
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+nav{
+    position: fixed;
+    right: 50px; top: 50px;
+    z-index: 99;
+}
+
+.ham {
+  width: 160px;
+  height: 50px;
+  border-radius: 5px;
+  border: none;
+  transition: all 0.5s ease-in-out;
+  font-size: 25px;
+  font-family: var(--Bebas-Neue);
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  background: #040f16;
+  color: #f5f5f5;
+}
+
+.ham:hover {
+  box-shadow: 0 0 20px 0px #2e2e2e3a;
+}
+
+.ham .icon {
+  position: absolute;
+  height: 40px;
+  width: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.5s;
+}
+
+.ham .text {
+  transform: translateX(55px);
+}
+
+.ham:hover .icon {
+  width: 175px;
+}
+
+.ham:hover .text {
+  transition: all 0.5s;
+  opacity: 0;
+}
+
+.ham:focus {
+  outline: none;
+}
+
+.ham:active .icon {
+  transform: scale(0.85);
+}
+
+/* main_bag */
+.main_bag {
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    left: 100%;
+    top: 0;
+    overflow: hidden;
+    background: #fff;
+    transition: .6s;
+    z-index: 100;
+}
+
+.main_bag.on {
+    left: 0;
+}
+
+.main_visual {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.main_visual img {
+    position: absolute;
+}
+
+.main_visual .bag {
+    height: 950px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    opacity: 0;
+}
+
+.main_visual .item {
+    transform: translate(-50%, -50%) scale(0.9);
+    transition: transform 0.3s ease;
+    cursor: pointer;
+    opacity: 0;
+    pointer-events: auto;
+}
+
+/* ===== 등장 애니메이션 (JS에서 부여) ===== */
+@keyframes itemAppear {
+    0% {
+        transform: translate(-50%, -60%) scale(0.7);
+        opacity: 0;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(0.95);
+        opacity: 1;
+    }
+}
+
+.item-appear {
+    transform: translateY(-5px);
+    transition: transform 0.3s ease;
+}
+
+/* ===== hover 애니메이션 ===== */
+/* @keyframes subtleShake {
+    0%   { transform: translate(-50%, -50%) rotate(0deg); }
+    25%  { transform: translate(-50%, -50%) rotate(-2deg); }
+    50%  { transform: translate(-50%, -50%) rotate(2deg); }
+    75%  { transform: translate(-50%, -50%) rotate(-1deg); }
+    100% { transform: translate(-50%, -50%) rotate(0deg); }
+}
+
+.item:hover {
+    animation: subtleShake 0.5s ease;
+} */
+
+/* 흔들림 애니메이션 정의 */
+@keyframes shake1 {
+    0%, 100% { transform: translate(-50%, -50%) rotate(0deg); }
+    25%  { transform: translate(-50%, -50%) rotate(-3deg); }
+    50%  { transform: translate(-50%, -50%) rotate(3deg); }
+    75%  { transform: translate(-50%, -50%) rotate(-2deg); }
+}
+
+@keyframes shake2 {
+    0%, 100% { transform: translate(-50%, -50%) rotate(0deg); }
+    20%  { transform: translate(-50%, -50%) rotate(2deg); }
+    40%  { transform: translate(-50%, -50%) rotate(-2deg); }
+    60%  { transform: translate(-50%, -50%) rotate(1deg); }
+}
+
+@keyframes shake3 {
+    0%, 100% { transform: translate(-50%, -50%) rotate(0deg); }
+    30%  { transform: translate(-50%, -50%) rotate(-1deg); }
+    60%  { transform: translate(-50%, -50%) rotate(1deg); }
+}
+
+@keyframes shake4 {
+    0%, 100% { transform: translate(-50%, -50%) rotate(0deg); }
+    25%  { transform: translate(-50%, -50%) rotate(3deg); }
+    50%  { transform: translate(-50%, -50%) rotate(-3deg); }
+    75%  { transform: translate(-50%, -50%) rotate(2deg); }
+}
+
+/* 흔들리는 클래스 (JS에서 부여) */
+.shake1 { animation: shake1 1.5s infinite ease-in-out; }
+.shake2 { animation: shake2 1.7s infinite ease-in-out; }
+.shake3 { animation: shake3 2s infinite ease-in-out; }
+.shake4 { animation: shake4 1.3s infinite ease-in-out; }
+
+.item:hover {
+    animation: none !important;
+}
+
+.main_visual .item1 {
+    top: 40%;
+    left: 44%;
+    z-index: 2;
+}
+
+.main_visual .item2 {
+    top: 55%;
+    left: 60%;
+    z-index: 2;
+}
+
+.main_visual .item3 {
+    top: 76%;
+    left: 56%;
+    z-index: 3;
+}
+
+.main_visual .item4 {
+    top: 70%;
+    left: 42%;
+    z-index: 2;
+}
+
+.main_bag .text {
+    font-family: var(--Cooper-black);
+    font-size: 160px;
+    width: 100%;
+}
+
+.main_bag .text div {
+    position: absolute;
+    display: inline-block;
+    font-weight: bold;
+    color: #000;
+    white-space: nowrap;
+}
+
+#text1 {
+    top: 20%;
+    left: 2%;
+}
+
+#text2 {
+    top: 55%;
+    left: 20%;
+}
+
+#text3 {
+    top: 25%;
+    right: 18%;
+}
+
+#text4 {
+    top: 50%;
+    right: 3%;
+}
+
+/* contact_main */
+.contact_main {
+    width: 100%;
+    height: 100vh;
+    background-color: var(--main-color);
+    position: relative;
+}
+
+.contact_main .bingo_visual {
+    width: 1700px;
+    height: 100vh;
+    border: 3px solid #000;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--main-color);
+    padding: 40px 20px;
+}
+
+.contact_main .bingo_visual .contact_title {
+    font-family: var(--Bangers);
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 40px;
+    padding: 20px 30px;
+}
+
+.contact_main .bingo_visual .contact_title h2 {
+    font-size: 96px;
+    position: relative;
+    z-index: 1;
+    margin: 0;
+}
+
+.contact_title .tag-left,
+.contact_title .tag-right {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.contact_main .bingo_visual .contact_title span {
+    font-size: 36px;
+    position: absolute;
+    text-align: center;
+    line-height: 1.0;
+    z-index: 100;
+    white-space: nowrap;
+}
+
+.contact_main .bingo_visual .contact_title span img {
+    width: 140px;
+    height: 140px;
+}
+
+.contact_main .bingo_visual .contact_title .tag-left {
+    position: absolute;
+    left: 10%;
+    top: 0;
+}
+
+.contact_main .bingo_visual .contact_title .tag-right {
+    position: absolute;
+    right: 10%;
+    top: 0;
+}
+
+.contact_main .bingo_visual .bingo_board {
+    width: 1500px;
+    height: 500px;
+    background: #fff;
+    font-family: var(--Glamour_Absolute);
+    font-size: 96px;
+    display: table;
+    border-collapse: separate;
+    border-spacing: 0;
+    /* 안 겹치게 하기 위해 */
+    border: 5px solid #000;
+    margin: 0 auto;
+}
+
+.contact_main .bingo_visual .bingo_board .row {
+    width: 100%;
+    height: 100px;
+    display: table-row;
+}
+
+.contact_main .bingo_visual .bingo_board .cell {
+    width: 150px;
+    height: 140px;
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+    border: 3px solid #000;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.cell.highlight-orange {
+    background-color: #FF6E4E;
+}
+
+.cell.highlight-mint {
+    background-color: #3BFBA8;
+}
+
+.player_name_input {
+    text-align: center;
+    margin-top: 30px;
+    font-family: var(--Bangers);
+    font-size: 60px;
+    color: #fff;
+    -webkit-text-stroke: 2px black;
+}
+
+.player_name_input input {
+    font-size: 60px;
+    width: 400px;
+    padding: 5px 10px;
+    text-align: center;
+    font-family: var(--Cafe24Ohsquare);
+    border: 2px solid #000;
+    margin-left: 20px;
+}
+
+/* 팝업창 */
+.popup-overlay {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 9998;
+}
+
+.popup-letter {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    position: fixed;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 1140px;
+    width: 90vw; height: auto;
+    aspect-ratio: 4 / 3;
+    display: flex;
+    background-image: url('../img/pop_bg.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 9999;
+}
+.popup-letter.show {
+  display: flex;
+  opacity: 1;
+}
+
+/* 왼쪽 */
+.letter-left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.letter-left .greeting {
+    padding-top: 150px;
+    width: 90%;
+}
+
+.letter-left .flowers{
+    display: flex;
+    justify-content: space-between;
+}
+.letter-left .flowers img{
+    width: 280px;
+    margin-bottom: 20px;
+}
+
+/* 오른쪽 */
+.letter-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 auto;
+  position: relative;
+}
+
+.flower-icon img {
+    position: absolute;
+    top: 50px; right: -30px;
+    transition: transform 0.4s ease;
+}
+
+.flower-icon:hover img {
+  transform: translateY(-5px) rotate(-5deg) scale(1.05);
+}
+
+/* 텍스트 */
+.letter-text {
+  font-family: var(--Schoolbell);
+  text-align: center;
+  margin-top: 150px;
+}
+
+.letter-text .title {
+  font-size: 45px;
+  font-weight: bold;
+  color: black;
+  margin-bottom: 10px;
+}
+
+.letter-text .arrow {
+  font-size: 45px;
+  margin-bottom: 10px;
+  animation: bounce 1s infinite;
+}
+
+.letter-text p {
+  font-size: 36px;
+  color: #333;
+  margin: 50px 0;
+}
+
+.letter-text span {
+  padding: 2px 4px;
+  border-radius: 4px;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
