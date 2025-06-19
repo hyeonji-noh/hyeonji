@@ -44,7 +44,8 @@
 }
 .project_overview .postit-tabs{
   display: flex;
-  width: max-content;
+  width: 1300px;
+  /* width: max-content; */
   gap: 10px;
   margin-top: -40px;
   position: absolute;
