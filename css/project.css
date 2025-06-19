@@ -64,7 +64,9 @@
 .project_overview .postit-tabs .postit-tab:hover {
   transform: rotate(-3deg) translateY(30px);
 }
-
+/* .project_overview .postit-tabs .postit-tab a{
+  width: 120px;
+} */
 .project_overview .postit-tabs .postit-tab img{
   transition: transform 0.8s ease, opacity 0.8s ease;
   transform-origin: top center;
